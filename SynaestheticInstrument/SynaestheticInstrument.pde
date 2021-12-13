@@ -38,11 +38,11 @@ ArrayList<Button> buttons = new ArrayList<Button>();
 int bpm = 60;
 float dur = 0.25;
 float ui = 255;
+float ui2 = 100;
 
 int beat; // which beat we're on
 
 BpmSlider bpmSlider; 
-DurSlider durSlider;
 
 boolean[] hatRipple = new boolean[32];
 boolean[] snrRipple = new boolean[32];
@@ -69,7 +69,7 @@ float[] rippleY = new float[32];
 
 void setup()
 {
-  size(1100, 900);
+  size(1200, 900);
   minim = new Minim(this);
   out = minim.getLineOut();
   
@@ -114,7 +114,6 @@ void setup()
   out.playNote(0, dur, new Tick());
 
   bpmSlider = new BpmSlider(bpm);
-  durSlider = new DurSlider(dur);
 }
 
 void draw()
@@ -122,6 +121,11 @@ void draw()
   background(127);
   fill(255);
   text(frameRate, width - 60, 20);
+  text("High Hat", 1039, 65); text("Snare", 1039, 115); text("Kick", 1039, 165);
+  text("G", 1039, 265); text("A", 1039, 315); text("BB", 1039, 365);
+  text("B", 1039, 415); text("CB", 1039, 465); text("C", 1039, 515);
+  text("D", 1039, 565); text("EB", 1039, 615); text("E", 1039, 665);
+  text("FB", 1039, 715); text("F", 1039, 765); text("GB", 1039, 815);
    
   for(int i = 0; i < buttons.size(); ++i)
   {
@@ -131,23 +135,20 @@ void draw()
   stroke(128);
     
   // beat marker   
+  fill(0, 127, 0, ui2);
+  rect(10+beat*32, 44, 30, height-44);
+  
   fill(200, ui);
   rect(10+beat*32, 35, 30, 9);
   
   //bpm slider background
-  rect(1050, 245, 50, 265);
+  rect(1150, 245, 50, 265);
   
   bpmSlider.update();
   bpmSlider.draw();
   bpm = bpmSlider.bpm;
   out.setTempo(bpm);
-  text("BPM: "+bpm, 1045, 240);
-  
-  durSlider.update();
-  durSlider.draw();
-  dur = durSlider.dur;
-  //out.playNote(0, dur, new Tick());
-  text("Dur: "+dur, 1045, height/2 - 265 - 45);
+  text("BPM: "+bpm, 1145, 240);
   
  
   rippleEffect(hatRow, hatRipple, 255, 255, 0);
@@ -189,7 +190,6 @@ void rippleEffect(boolean[] row, boolean[] ripple, int r, int g, int b){
 void mousePressed()
 {  
   bpmSlider.mousePressed();
-  durSlider.mousePressed();
   
   for(int i = 0; i < buttons.size(); ++i)
   {
@@ -200,5 +200,4 @@ void mousePressed()
 void mouseReleased()
 {
   bpmSlider.mouseReleased();
-  durSlider.mouseReleased();
 }

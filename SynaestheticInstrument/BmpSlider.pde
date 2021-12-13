@@ -8,8 +8,8 @@ class BpmSlider {
   boolean mp = false;
   
   BpmSlider(int bpmIn) {
-    position = new PVector(1075,height/2);
-    target = new PVector(1075,height/2);
+    position = new PVector(1175,height/2);
+    target = new PVector(1175,height/2);
     speed = 0.1;
     dotSize = 50;
     bpm = bpmIn;
