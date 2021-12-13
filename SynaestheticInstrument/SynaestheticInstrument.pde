@@ -1,4 +1,4 @@
-//heavily based of the minim drumkit example
+//heavily based of the minim drumkit example (http://code.compartmental.net/minim/index.html)
 //drumkit sounds came from the example
 //piano sounds came from free sound (https://freesound.org/people/pinkyfinger/packs/4409/) more info in readme
 import processing.opengl.*;
@@ -52,8 +52,7 @@ void setup()
   minim = new Minim(this);
   out = minim.getLineOut();
   
-  //http://code.compartmental.net/minim/sampler_class_sampler.html
-  
+  //(http://code.compartmental.net/minim/sampler_class_sampler.html)
   kick  = new Sampler("drum/kick.wav", 4, minim);
   snare = new Sampler("drum/snare.wav", 4, minim);
   hat   = new Sampler("drum/hat.wav", 4, minim);
