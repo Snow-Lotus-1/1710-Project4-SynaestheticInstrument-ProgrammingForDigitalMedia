@@ -44,6 +44,19 @@ boolean[] hatRipple = new boolean[32];
 boolean[] snrRipple = new boolean[32];
 boolean[] kikRipple = new boolean[32];
 
+boolean[] pngRipple = new boolean[32];
+boolean[] pnaRipple = new boolean[32];
+boolean[] pnbbRipple = new boolean[32];
+boolean[] pnbRipple = new boolean[32];
+boolean[] pncbRipple = new boolean[32];
+boolean[] pncRipple = new boolean[32];
+boolean[] pndRipple = new boolean[32];
+boolean[] pnebRipple = new boolean[32];
+boolean[] pneRipple = new boolean[32];
+boolean[] pnfbRipple = new boolean[32];
+boolean[] pnfRipple = new boolean[32];
+boolean[] pngbRipple = new boolean[32];
+
 
 int[] rippleSize = new int[32];
 float[] rippleAlpha = new float[32];
@@ -130,68 +143,45 @@ void draw()
   text("BPM: "+bpm, 1045, 240);
   
  
-  if (hatRow[beat]){  
-    for(int i = 0; i < hatRipple.length; ++i){    
-      if(hatRipple[i] == false){
-        hatRipple[i] = true;
-        break;
-      }
-    }  
-  }
-  for(int i = 0; i < hatRipple.length; ++i){  
-    if (hatRipple[i]){
-      fill(255, 255, 0, rippleAlpha[i]);
-      ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
-      rippleAlpha[i]--; rippleSize[i]+=5;
-      if(rippleAlpha[i] == 0){
-        rippleAlpha[i] = 100;
-        rippleSize[i] = 0;
-        hatRipple[i] = false;
-      } 
-    }
-  }
+  rippleEffect(hatRow, hatRipple, 255, 255, 0);
+  rippleEffect(snrRow, snrRipple, 255, 0, 255);
+  rippleEffect(kikRow, kikRipple, 0, 255, 255);
   
-  if (snrRow[beat]){  
-    for(int i = 0; i < snrRipple.length; ++i){    
-      if(snrRipple[i] == false){
-        snrRipple[i] = true;
+  rippleEffect(pngRow, pngRipple, 200, 200, 0);
+  rippleEffect(pnaRow, pngRipple, 250, 150, 0);
+  rippleEffect(pnbbRow, pngRipple, 0, 150, 250);
+  rippleEffect(pnbRow, pngRipple, 200, 0, 200);
+  rippleEffect(pncbRow, pngRipple, 255, 200, 200);
+  rippleEffect(pncRow, pngRipple, 250, 0, 150);
+  rippleEffect(pndRow, pngRipple, 0, 200, 150);
+  rippleEffect(pnebRow, pngRipple, 150, 250, 100);
+  rippleEffect(pneRow, pngRipple, 100, 150, 250);
+  rippleEffect(pnfbRow, pngRipple, 250, 100, 150);
+  rippleEffect(pnfRow, pngRipple, 100, 250, 100);
+  rippleEffect(pngbRow, pngRipple, 50, 100, 250); 
+}
+
+void rippleEffect(boolean[] row, boolean[] ripple, int r, int g, int b){
+  if (row[beat]){  
+    for(int i = 0; i < ripple.length; ++i){    
+      if(ripple[i] == false){
+        ripple[i] = true;
         break;
       }
     }  
   }
-  for(int i = 0; i < snrRipple.length; ++i){  
-    if (snrRipple[i]){
-      fill(0, 255, 255, rippleAlpha[i]);
+  for(int i = 0; i < ripple.length; ++i){  
+    if (ripple[i]){
+      fill(r, g, b, rippleAlpha[i]);
       ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
       rippleAlpha[i]--; rippleSize[i]+=5;
       if(rippleAlpha[i] == 0){
         rippleAlpha[i] = 100;
         rippleSize[i] = 0;
-        snrRipple[i] = false;
+        ripple[i] = false;
       } 
     }
-  }
-  
-  if (kikRow[beat]){  
-    for(int i = 0; i < kikRipple.length; ++i){    
-      if(kikRipple[i] == false){
-        kikRipple[i] = true;
-        break;
-      }
-    }  
-  }
-  for(int i = 0; i < kikRipple.length; ++i){  
-    if (kikRipple[i]){
-      fill(255, 0, 255, rippleAlpha[i]);
-      ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
-      rippleAlpha[i]--; rippleSize[i]+=5;
-      if(rippleAlpha[i] == 0){
-        rippleAlpha[i] = 100;
-        rippleSize[i] = 0;
-        kikRipple[i] = false;
-      } 
-    }
-  }
+  } 
 }
 
 void mousePressed()
