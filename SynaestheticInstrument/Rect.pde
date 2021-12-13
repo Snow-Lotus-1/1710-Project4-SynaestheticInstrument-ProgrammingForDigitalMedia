@@ -19,7 +19,7 @@ class Button
   {
     if ( steps[stepId] )
     {
-      fill(0,255,0);
+      fill(0,255,0, ui);
     }
     else
     {
