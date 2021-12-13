@@ -1,12 +1,9 @@
-// here's an Instrument implementation that we use 
-// to trigger Samplers every sixteenth note. 
-// Notice how we get away with using only one instance
-// of this class to have endless beat making by 
-// having the class schedule itself to be played
-// at the end of its noteOff method. 
+//implements the Instrument class 
+//used to trigger the sfx every 32 note. 
 class Tick implements Instrument
 {
-  void noteOn( float dur )
+  //because Tick implments Instrument we need a variable for noteOn a Instrument method
+  void noteOn(float dur)
   {
     if (hatRow[beat]){hat.trigger();}
     if (snrRow[beat]){snare.trigger();}

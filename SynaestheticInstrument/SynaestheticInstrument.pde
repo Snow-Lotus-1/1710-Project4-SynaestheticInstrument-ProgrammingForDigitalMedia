@@ -1,18 +1,7 @@
+//heavily based of the minim drumkit example
+//drumkit sounds came from the example
+//piano sounds came from free sound (https://freesound.org/people/pinkyfinger/packs/4409/) more info in readme
 import processing.opengl.*;
-
-/**
-  * This sketch is a more involved use of AudioSamples to create a simple drum machine. 
-  * Click on the buttons to toggle them on and off. The buttons that are on will trigger 
-  * samples when the beat marker passes over their column. You can change the tempo by 
-  * clicking in the BPM box and dragging the mouse up and down.
-  * <p>
-  * We achieve the timing by using AudioOutput's playNote method and a cleverly written Instrument.
-  * <p>
-  * For more information about Minim and additional features, 
-  * visit http://code.compartmental.net/minim/
-  */
-
-
 import ddf.minim.*;
 import ddf.minim.ugens.*;
 
@@ -63,14 +52,11 @@ void setup()
   minim = new Minim(this);
   out = minim.getLineOut();
   
-  // load all of our samples, using 4 voices for each.
-  // this will help ensure we have enough voices to handle even
-  // very fast tempos.
   //http://code.compartmental.net/minim/sampler_class_sampler.html
   
-  kick  = new Sampler( "drum/kick.wav", 4, minim );
-  snare = new Sampler( "drum/snare.wav", 4, minim );
-  hat   = new Sampler( "drum/hat.wav", 4, minim );
+  kick  = new Sampler("drum/kick.wav", 4, minim);
+  snare = new Sampler("drum/snare.wav", 4, minim);
+  hat   = new Sampler("drum/hat.wav", 4, minim);
   
   pianoG = new Sampler("piano/pG.wav", 4, minim); pianoA = new Sampler("piano/pA.wav", 4, minim); pianoBB = new Sampler("piano/pBB.wav", 4, minim);
   pianoB = new Sampler("piano/pB.wav", 4, minim); pianoCB = new Sampler("piano/pCB.wav", 4, minim); pianoC = new Sampler("piano/pC.wav", 4, minim);
