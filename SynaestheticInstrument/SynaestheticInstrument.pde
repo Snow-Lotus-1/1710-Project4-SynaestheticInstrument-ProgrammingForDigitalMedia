@@ -162,16 +162,25 @@ void draw()
 }
 
 void rippleEffect(boolean[] row, boolean[] ripple, int r, int g, int b){
-  if (row[beat]){  
-    for(int i = 0; i < ripple.length; ++i){    
+  if (row[beat]){ 
+    /*
+    for(int i = 0; i < ripple.length; ++i){         
       if(ripple[i] == false){
         ripple[i] = true;
         break;
       }
     }  
+    */
+    ripple[beat] = true;
   }
   for(int i = 0; i < ripple.length; ++i){  
     if (ripple[i]){
+      print(beat+"\n");
+      
+      if (ripple[31])
+      {
+        print("hello"); 
+      }
       fill(r, g, b, rippleAlpha[i]);
       ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
       rippleAlpha[i]--; rippleSize[i]+=5;
