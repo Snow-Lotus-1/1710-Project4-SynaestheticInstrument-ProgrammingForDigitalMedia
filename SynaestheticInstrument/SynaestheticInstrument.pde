@@ -41,6 +41,10 @@ int beat; // which beat we're on
 BpmSlider bpmSlider; 
 
 boolean[] hatRipple = new boolean[32];
+boolean[] snrRipple = new boolean[32];
+boolean[] kikRipple = new boolean[32];
+
+
 int[] rippleSize = new int[32];
 float[] rippleAlpha = new float[32];
 float[] rippleX = new float[32];
@@ -134,22 +138,59 @@ void draw()
       }
     }  
   }
-
   for(int i = 0; i < hatRipple.length; ++i){  
-    if (!(buttons.get(i).steps[buttons.get(i).stepId]==false)){
-        if (hatRipple[i]){
-        fill(255, 255, 0, rippleAlpha[i]);
-        ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
-        rippleAlpha[i]--; rippleSize[i]+=5;
-        if(rippleAlpha[i] == 0){
-          rippleAlpha[i] = 100;
-          rippleSize[i] = 0;
-          hatRipple[i] = false;
-        } 
-        
-      }
+    if (hatRipple[i]){
+      fill(255, 255, 0, rippleAlpha[i]);
+      ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
+      rippleAlpha[i]--; rippleSize[i]+=5;
+      if(rippleAlpha[i] == 0){
+        rippleAlpha[i] = 100;
+        rippleSize[i] = 0;
+        hatRipple[i] = false;
+      } 
     }
-
+  }
+  
+  if (snrRow[beat]){  
+    for(int i = 0; i < snrRipple.length; ++i){    
+      if(snrRipple[i] == false){
+        snrRipple[i] = true;
+        break;
+      }
+    }  
+  }
+  for(int i = 0; i < snrRipple.length; ++i){  
+    if (snrRipple[i]){
+      fill(0, 255, 255, rippleAlpha[i]);
+      ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
+      rippleAlpha[i]--; rippleSize[i]+=5;
+      if(rippleAlpha[i] == 0){
+        rippleAlpha[i] = 100;
+        rippleSize[i] = 0;
+        snrRipple[i] = false;
+      } 
+    }
+  }
+  
+  if (kikRow[beat]){  
+    for(int i = 0; i < kikRipple.length; ++i){    
+      if(kikRipple[i] == false){
+        kikRipple[i] = true;
+        break;
+      }
+    }  
+  }
+  for(int i = 0; i < kikRipple.length; ++i){  
+    if (kikRipple[i]){
+      fill(255, 0, 255, rippleAlpha[i]);
+      ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
+      rippleAlpha[i]--; rippleSize[i]+=5;
+      if(rippleAlpha[i] == 0){
+        rippleAlpha[i] = 100;
+        rippleSize[i] = 0;
+        kikRipple[i] = false;
+      } 
+    }
   }
 }
 
