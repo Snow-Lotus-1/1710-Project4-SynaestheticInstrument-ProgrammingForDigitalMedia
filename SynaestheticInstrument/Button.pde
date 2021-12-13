@@ -19,11 +19,11 @@ class Button
   {
     if ( steps[stepId] )
     {
-      fill(0,255,0, ui);
+      fill(255,255,255, ui);
     }
     else
     {
-      fill(255,0,0,ui);
+      fill(0,0,0,ui);
     }
     ellipseMode(RIGHT);
     ellipse(x,y,widthB,heightB);

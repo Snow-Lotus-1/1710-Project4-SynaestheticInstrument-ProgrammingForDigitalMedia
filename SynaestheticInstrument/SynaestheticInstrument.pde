@@ -4,6 +4,7 @@
 import processing.opengl.*;
 import ddf.minim.*;
 import ddf.minim.ugens.*;
+import processing.sound.*;
 
 Minim minim;
 AudioOutput out;
@@ -35,10 +36,13 @@ ArrayList<Button> buttons = new ArrayList<Button>();
 
 //beats per min
 int bpm = 60;
+float dur = 0.25;
+float ui = 255;
 
 int beat; // which beat we're on
 
 BpmSlider bpmSlider; 
+DurSlider durSlider;
 
 boolean[] hatRipple = new boolean[32];
 boolean[] snrRipple = new boolean[32];
@@ -107,9 +111,10 @@ void setup()
   
   // start the sequencer
   out.setTempo(bpm);
-  out.playNote(0, 0.25f, new Tick());
-  
+  out.playNote(0, dur, new Tick());
+
   bpmSlider = new BpmSlider(bpm);
+  durSlider = new DurSlider(dur);
 }
 
 void draw()
@@ -117,10 +122,6 @@ void draw()
   background(127);
   fill(255);
   text(frameRate, width - 60, 20);
-  
-  
-  
-  
    
   for(int i = 0; i < buttons.size(); ++i)
   {
@@ -130,7 +131,7 @@ void draw()
   stroke(128);
     
   // beat marker   
-  fill(200);
+  fill(200, ui);
   rect(10+beat*32, 35, 30, 9);
   
   //bpm slider background
@@ -141,6 +142,12 @@ void draw()
   bpm = bpmSlider.bpm;
   out.setTempo(bpm);
   text("BPM: "+bpm, 1045, 240);
+  
+  durSlider.update();
+  durSlider.draw();
+  dur = durSlider.dur;
+  //out.playNote(0, dur, new Tick());
+  text("Dur: "+dur, 1045, height/2 - 265 - 45);
   
  
   rippleEffect(hatRow, hatRipple, 255, 255, 0);
@@ -163,24 +170,10 @@ void draw()
 
 void rippleEffect(boolean[] row, boolean[] ripple, int r, int g, int b){
   if (row[beat]){ 
-    /*
-    for(int i = 0; i < ripple.length; ++i){         
-      if(ripple[i] == false){
-        ripple[i] = true;
-        break;
-      }
-    }  
-    */
     ripple[beat] = true;
   }
   for(int i = 0; i < ripple.length; ++i){  
     if (ripple[i]){
-      print(beat+"\n");
-      
-      if (ripple[31])
-      {
-        print("hello"); 
-      }
       fill(r, g, b, rippleAlpha[i]);
       ellipse(rippleX[i], rippleY[i], rippleSize[i], rippleSize[i]);
       rippleAlpha[i]--; rippleSize[i]+=5;
@@ -196,6 +189,7 @@ void rippleEffect(boolean[] row, boolean[] ripple, int r, int g, int b){
 void mousePressed()
 {  
   bpmSlider.mousePressed();
+  durSlider.mousePressed();
   
   for(int i = 0; i < buttons.size(); ++i)
   {
@@ -206,4 +200,5 @@ void mousePressed()
 void mouseReleased()
 {
   bpmSlider.mouseReleased();
+  durSlider.mouseReleased();
 }
