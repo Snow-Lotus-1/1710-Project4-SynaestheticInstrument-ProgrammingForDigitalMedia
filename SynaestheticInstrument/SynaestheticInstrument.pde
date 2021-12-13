@@ -148,17 +148,17 @@ void draw()
   rippleEffect(kikRow, kikRipple, 0, 255, 255);
   
   rippleEffect(pngRow, pngRipple, 200, 200, 0);
-  rippleEffect(pnaRow, pngRipple, 250, 150, 0);
-  rippleEffect(pnbbRow, pngRipple, 0, 150, 250);
-  rippleEffect(pnbRow, pngRipple, 200, 0, 200);
-  rippleEffect(pncbRow, pngRipple, 255, 200, 200);
-  rippleEffect(pncRow, pngRipple, 250, 0, 150);
-  rippleEffect(pndRow, pngRipple, 0, 200, 150);
-  rippleEffect(pnebRow, pngRipple, 150, 250, 100);
-  rippleEffect(pneRow, pngRipple, 100, 150, 250);
-  rippleEffect(pnfbRow, pngRipple, 250, 100, 150);
-  rippleEffect(pnfRow, pngRipple, 100, 250, 100);
-  rippleEffect(pngbRow, pngRipple, 50, 100, 250); 
+  rippleEffect(pnaRow, pnaRipple, 250, 150, 0);
+  rippleEffect(pnbbRow, pnbbRipple, 0, 150, 250);
+  rippleEffect(pnbRow, pnbRipple, 200, 0, 200);
+  rippleEffect(pncbRow, pncbRipple, 255, 200, 200);
+  rippleEffect(pncRow, pncRipple, 250, 0, 150);
+  rippleEffect(pndRow, pndRipple, 0, 200, 150);
+  rippleEffect(pnebRow, pnebRipple, 150, 250, 100);
+  rippleEffect(pneRow, pneRipple, 100, 150, 250);
+  rippleEffect(pnfbRow, pnfbRipple, 250, 100, 150);
+  rippleEffect(pnfRow, pnfRipple, 100, 250, 100);
+  rippleEffect(pngbRow, pngbRipple, 50, 100, 250); 
 }
 
 void rippleEffect(boolean[] row, boolean[] ripple, int r, int g, int b){
