@@ -3,6 +3,7 @@ class Button
   int x, y, widthB, heightB;
   boolean[] steps;
   int stepId;
+  float ui = 255;
   
   public Button(int xIn, int yIn, boolean[] stepsIn, int idIn)
   {
@@ -22,7 +23,7 @@ class Button
     }
     else
     {
-      fill(255,0,0);
+      fill(255,0,0,ui);
     }
     ellipseMode(RIGHT);
     ellipse(x,y,widthB,heightB);
